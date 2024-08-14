@@ -20,6 +20,5 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "noFallthroughCasesInSwitch": true,
-        "suppressImplicitAnyIndexErrors": true
     }
 }

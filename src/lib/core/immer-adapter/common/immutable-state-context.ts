@@ -1,5 +1,6 @@
 import { StateContext, StateOperator } from '@ngxs/store';
-import { createDraft, finishDraft } from 'immer';
+import { ExistingState } from '@ngxs/store/operators';
+import { createDraft, finishDraft, Objectish } from 'immer';
 import { Observable } from 'rxjs';
 
 export class ImmutableStateContext<T extends any> implements StateContext<T> {
@@ -20,16 +21,16 @@ export class ImmutableStateContext<T extends any> implements StateContext<T> {
   }
 
   public getState(): T {
-    this.frozenState = createDraft(this.ctx.getState()) as T;
+    this.frozenState = createDraft(this.ctx.getState() as Objectish) as T;
     return this.frozenState;
   }
 
-  public setState(val: T | StateOperator<T>): T {
-    let state: T;
+  public setState(val: T | StateOperator<T>): void {
+    let state: any;
 
     if (typeof val === 'function') {
-      let newState: T;
-      const oldState: T = createDraft(this.ctx.getState()) as T;
+      let newState;
+      const oldState: ExistingState<T> = createDraft(this.ctx.getState() as Objectish) as ExistingState<T>;
       const operator: StateOperator<T> = val as StateOperator<T>;
       const mutatedOldState: T = operator(oldState);
 
@@ -55,7 +56,7 @@ export class ImmutableStateContext<T extends any> implements StateContext<T> {
     return this.ctx.setState(state);
   }
 
-  public patchState(val: Partial<T>): T {
+  public patchState(val: Partial<T>): void {
     return this.ctx.patchState(finishDraft(val) as Partial<T>);
   }
 
