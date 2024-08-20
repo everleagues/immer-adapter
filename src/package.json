@@ -17,18 +17,13 @@
     ],
     "sideEffects": true,
     "peerDependencies": {
-        "@angular/core": "^12.0.4",
-        "@ngxs/store": "^3.7.1",
-        "immer": "^9.0.3"
+        "@angular/core": "^18.1.4",
+        "@ngxs/store": "^18.1.1",
+        "immer": "^10.1.1"
     },
     "ngPackage": {
         "lib": {
-            "flatModuleFile": "ngxs-labs-immer-adapter",
-            "entryFile": "index.ts",
-            "umdModuleIds": {
-                "@ngxs/store": "ngxs-store",
-                "immer": "immer"
-            }
+            
         },
         "dest": "../dist/immer-adapter"
     }
