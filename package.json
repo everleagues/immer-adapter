@@ -59,7 +59,7 @@
     "devDependencies": {
         "@angular-builders/jest": "18.0.0",
         "@angular-devkit/build-angular": "18.1.4",
-        "@angular-devkit/build-ng-packagr": "18.1.4",
+        "@angular-devkit/build-ng-packagr": "0.1002.0",
         "@angular/cli": "18.1.4",
         "@angular/compiler-cli": "18.1.4",
         "@types/node": "^22.2.0",
